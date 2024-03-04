@@ -79,6 +79,15 @@ void append(struct DynamicArray *arr, char *value) {
     arr->size += 1;
 }
 
+void pop(struct DynamicArray *arr) {
+    struct Node *tailNode = arr->tail;
+    arr->tail = tailNode->prev;
+    arr->tail->next = NULL;
+
+    free(tailNode);
+    arr->size -= 1;
+}
+
 void print(struct DynamicArray *arr){
     struct Node *currentNode;
     currentNode = arr->head;
